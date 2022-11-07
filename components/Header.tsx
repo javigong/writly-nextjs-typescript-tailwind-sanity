@@ -5,7 +5,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <header className="flex justify-between p-5 max-w-7xl mx-auto">
+    <header className="flex justify-between p-5 max-w-7xl mx-auto -mb-6">
       <div className="flex items-center space-x-5">
         <Link href="/">
           <div>
