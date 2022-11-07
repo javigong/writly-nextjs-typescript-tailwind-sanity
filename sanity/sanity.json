@@ -3,10 +3,6 @@
   "project": {
     "name": "writly-nextjs"
   },
-  "api": {
-    "projectId": "82qqye1l",
-    "dataset": "production"
-  },
   "plugins": [
     "@sanity/base",
     "@sanity/default-layout",
