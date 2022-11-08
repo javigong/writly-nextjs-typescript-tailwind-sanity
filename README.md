@@ -1,27 +1,22 @@
-# Next.js + Tailwind CSS Example
+# Writly: Blog Platform Project
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v3.2)](https://tailwindcss.com/blog/tailwindcss-v3-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+## Tech Stack
 
-## Deploy your own
+- Next.js
+- React.js
+- TypeScript
+- Sanity CMS
+- TailwindCSS
 
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) or preview live with [StackBlitz](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
+## Features
 
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
+- Blog data structured using Sanity CMS.
+- Modern data fetching and caching techniques using Incremental Static Regeneration (ISR) to speed up page loading.
+- Responsive UI using Tailwind CSS.
+- Robust code using TypeScript.
 
-## How to use
+## Deployment
 
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+Blog platform deployed using Vercel: [https://writly-nextjs-typescript-tailwind-sanity.vercel.app/](https://writly-nextjs-typescript-tailwind-sanity.vercel.app/)
 
-```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-```bash
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-```bash
-pnpm create next-app --example with-tailwindcss with-tailwindcss-app
-```
-
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Content Management System deployed using Sanity: [https://writly-nextjs.sanity.studio/](https://writly-nextjs.sanity.studio/)
