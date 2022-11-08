@@ -6,9 +6,12 @@
     "start": "next start"
   },
   "dependencies": {
+    "@sanity/image-url": "^1.0.1",
     "next": "latest",
+    "next-sanity": "^1.0.9",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-portable-text": "^0.5.1"
   },
   "devDependencies": {
     "@types/node": "18.11.3",

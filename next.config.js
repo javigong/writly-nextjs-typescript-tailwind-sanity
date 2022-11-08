@@ -4,11 +4,17 @@ module.exports = {
   images: {
     remotePatterns: [
       {
-        protocol: 'http',
-        hostname: 'localhost',
-        port: '',
-        pathname: '/*/**',
+        protocol: "http",
+        hostname: "localhost",
+        port: "",
+        pathname: "/*/**",
+      },
+      {
+        protocol: "https",
+        hostname: "cdn.sanity.io",
+        port: "",
+        pathname: "/*/**",
       },
     ],
   },
-}
+};
