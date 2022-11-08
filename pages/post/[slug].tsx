@@ -82,7 +82,7 @@ const Post = ({ post }: Props) => {
               className=""
               dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
               projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
-              content={post.body}
+              content={post.body as unknown as object[]}
               serializers={{
                 normal: (props: any) => (
                   <p className="my-5"> {props.children}</p>
