@@ -1,15 +1,40 @@
-import PortableText from "react-portable-text";
 import { GetStaticProps } from "next";
 import Image from "next/image";
+import { SubmitHandler, useForm } from "react-hook-form";
+import PortableText from "react-portable-text";
 import Header from "../../components/Header";
 import { sanityClient, urlFor } from "../../sanity";
 import { Post } from "../../typings";
+
+interface IFormInput {
+  _id: string;
+  name: string;
+  email: string;
+  comment: string;
+}
 
 type Props = {
   post: Post;
 };
 
 const Post = ({ post }: Props) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<IFormInput>();
+
+  const onSubmit: SubmitHandler<IFormInput> = async (data) => {
+    await fetch("/api/comments", {
+      method: "POST",
+      body: JSON.stringify(data),
+    })
+      .then(() => [console.log(data)])
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <main>
       <Header />
@@ -23,8 +48,10 @@ const Post = ({ post }: Props) => {
       />
 
       <article className="max-w-3xl mx-auto p-5">
-        <h1 className="text-3xl mt-10 mb-3">{post.title}</h1>
-        <h2 className="text-xl font-light text-gray-500">{post.description}</h2>
+        <h1 className="text-3xl mt-10 mb-1">{post.title}</h1>
+        <h2 className="text-xl font-light text-gray-500 mb-3">
+          {post.description}
+        </h2>
         <div className="flex items-center space-x-2">
           <Image
             className="h-10 w-10 rounded-full object-cover"
@@ -45,19 +72,19 @@ const Post = ({ post }: Props) => {
         <div>
           <div className="mt-10">
             <PortableText
-            className=""
+              className=""
               dataset={process.env.NEXT_PUBLIC_SANITY_DATASET!}
               projectId={process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!}
               content={post.body}
               serializers={{
                 normal: (props: any) => (
-                  <p className="mb-5"> {props.children}</p>
-              ),
+                  <p className="my-5"> {props.children}</p>
+                ),
                 h1: (props: any) => {
-                  <h1 className="text-2xl font-bold my-5" {...props} />;
+                  <h1 className="text-2xl my-5" {...props} />;
                 },
                 h2: (props: any) => {
-                  <h2 className="text-xl font-bold my-5" {...props} />;
+                  <h2 className="text-xl my-5" {...props} />;
                 },
                 li: ({ children }: any) => {
                   <li className="ml-4 list-disc">{children}</li>;
@@ -72,6 +99,71 @@ const Post = ({ post }: Props) => {
           </div>
         </div>
       </article>
+
+      <hr className="max-w-lg my-5 mx-auto border border-[royalblue]" />
+
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="flex flex-col p-5  max-w-2xl mx-auto mb-10"
+      >
+        <h3 className="text-sm text-[royalblue]">Enjoyed this article?</h3>
+        <h4 className="text-3xl font-bold">Leave a comment</h4>
+        <hr className="py-3 mt-2" />
+
+        <input
+          {...register("_id")} // register an input
+          type="hidden"
+          name="_id"
+          value={post._id}
+        />
+        <label className="block mb-5">
+          <span className="text-gray-700">Name</span>
+          <input
+            {...register("name", { required: true })} // register an input
+            className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
+            placeholder="John Doe"
+            type="text"
+          />
+        </label>
+        <label className="block mb-5">
+          <span className="text-gray-700">Email</span>
+          <input
+            {...register("email", { required: true })} // register an input
+            className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
+            placeholder="john.doe@gmail.com"
+            type="email"
+          />
+        </label>
+        <label className="block mb-5">
+          <span className="text-gray-700">Comment</span>
+          <textarea
+            {...register("comment", { required: true })} // register an input
+            className="shadow border rounder py-2 px-3 form-textarea block w-full outline-none focus:bg-[royalblue]/5"
+            placeholder="Write here..."
+            rows={8}
+          />
+        </label>
+
+        {/* {errors will return when field validation fails } */}
+        <div className="flex flex-col p-5">
+          {errors.name && (
+            <span className="text-red-500 text-sm">The Name is required</span>
+          )}
+          {errors.email && (
+            <span className="text-red-500 text-sm">The Email is required</span>
+          )}
+          {errors.comment && (
+            <span className="text-red-500 text-sm">
+              The Comment is required
+            </span>
+          )}
+        </div>
+
+        <input
+          type="submit"
+          className="shadow bg-[royalblue] hover:bg-blue-300 text-white focus:outline-none px-4 py-2 rounded cursor-pointer"
+        />
+      </form>
     </main>
   );
 };
