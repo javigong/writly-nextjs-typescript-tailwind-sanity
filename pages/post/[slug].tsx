@@ -1,5 +1,6 @@
 import { GetStaticProps } from "next";
 import Image from "next/image";
+import { useState } from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import PortableText from "react-portable-text";
 import Header from "../../components/Header";
@@ -18,6 +19,8 @@ type Props = {
 };
 
 const Post = ({ post }: Props) => {
+  const [submitted, setSubmitted] = useState(false);
+  
   const {
     register,
     handleSubmit,
@@ -29,9 +32,13 @@ const Post = ({ post }: Props) => {
       method: "POST",
       body: JSON.stringify(data),
     })
-      .then(() => [console.log(data)])
+      .then(() => {
+        console.log(data);
+        setSubmitted(true);
+      })
       .catch((err) => {
         console.log(err);
+        setSubmitted(false);
       });
   };
 
@@ -102,69 +109,92 @@ const Post = ({ post }: Props) => {
 
       <hr className="max-w-lg my-5 mx-auto border border-[royalblue]" />
 
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="flex flex-col p-5  max-w-2xl mx-auto mb-10"
-      >
-        <h3 className="text-sm text-[royalblue]">Enjoyed this article?</h3>
-        <h4 className="text-3xl font-bold">Leave a comment</h4>
-        <hr className="py-3 mt-2" />
-
-        <input
-          {...register("_id")} // register an input
-          type="hidden"
-          name="_id"
-          value={post._id}
-        />
-        <label className="block mb-5">
-          <span className="text-gray-700">Name</span>
-          <input
-            {...register("name", { required: true })} // register an input
-            className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
-            placeholder="John Doe"
-            type="text"
-          />
-        </label>
-        <label className="block mb-5">
-          <span className="text-gray-700">Email</span>
-          <input
-            {...register("email", { required: true })} // register an input
-            className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
-            placeholder="john.doe@gmail.com"
-            type="email"
-          />
-        </label>
-        <label className="block mb-5">
-          <span className="text-gray-700">Comment</span>
-          <textarea
-            {...register("comment", { required: true })} // register an input
-            className="shadow border rounder py-2 px-3 form-textarea block w-full outline-none focus:bg-[royalblue]/5"
-            placeholder="Write here..."
-            rows={8}
-          />
-        </label>
-
-        {/* {errors will return when field validation fails } */}
-        <div className="flex flex-col p-5">
-          {errors.name && (
-            <span className="text-red-500 text-sm">The Name is required</span>
-          )}
-          {errors.email && (
-            <span className="text-red-500 text-sm">The Email is required</span>
-          )}
-          {errors.comment && (
-            <span className="text-red-500 text-sm">
-              The Comment is required
-            </span>
-          )}
+      {submitted ? (
+        <div className="flex flex-col p-10 my-10 bg-[royalblue] text-white max-w-2xl mx-auto">
+          <h3 className="text-3xl font-bold">Thank you for your comment!</h3>
+          <p>It will be published after approval.</p>
         </div>
+      ) : (
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className="flex flex-col p-5  max-w-2xl mx-auto mb-10"
+        >
+          <h3 className="text-sm text-[royalblue]">Enjoyed this article?</h3>
+          <h4 className="text-3xl font-bold">Leave a comment</h4>
+          <hr className="py-3 mt-2" />
 
-        <input
-          type="submit"
-          className="shadow bg-[royalblue] hover:bg-blue-300 text-white focus:outline-none px-4 py-2 rounded cursor-pointer"
-        />
-      </form>
-    </main>
+          <input
+            {...register("_id")} // register an input
+            type="hidden"
+            name="_id"
+            value={post._id}
+          />
+          <label className="block mb-5">
+            <span className="text-gray-700">Name</span>
+            <input
+              {...register("name", { required: true })} // register an input
+              className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
+              placeholder="John Doe"
+              type="text"
+            />
+          </label>
+          <label className="block mb-5">
+            <span className="text-gray-700">Email</span>
+            <input
+              {...register("email", { required: true })} // register an input
+              className="shadow border rounder py-2 px-3 form-input block w-full outline-none focus:bg-[royalblue]/5"
+              placeholder="john.doe@gmail.com"
+              type="email"
+            />
+          </label>
+          <label className="block mb-5">
+            <span className="text-gray-700">Comment</span>
+            <textarea
+              {...register("comment", { required: true })} // register an input
+              className="shadow border rounder py-2 px-3 form-textarea block w-full outline-none focus:bg-[royalblue]/5"
+              placeholder="Write here..."
+              rows={8}
+            />
+          </label>
+
+          {/* {errors will return when field validation fails } */}
+          <div className="flex flex-col p-5">
+            {errors.name && (
+              <span className="text-red-500 text-sm">The Name is required</span>
+            )}
+            {errors.email && (
+              <span className="text-red-500 text-sm">
+                The Email is required
+              </span>
+            )}
+            {errors.comment && (
+              <span className="text-red-500 text-sm">
+                The Comment is required
+              </span>
+            )}
+          </div>
+
+          <input
+            type="submit"
+            className="shadow bg-[royalblue] hover:bg-blue-300 text-white focus:outline-none px-4 py-2 rounded cursor-pointer"
+          />
+        </form>
+      )}
+
+      {/* Comments */}
+
+      <div className="flex flex-col p-10 my-10 max-w-2xl mx-auto shadow-[royalblue] shadow space-y-2">
+        <h3 className="text-3xl">Comments</h3>
+        <hr className="pb-2" />
+
+        {post.comments.map((comment) => (
+          <div key={comment._id}>
+            <p><span className="text-[royalblue]">{comment.name}</span>: {comment.comment}</p>
+
+          </div>
+        ))}
+      </div>
+    </main> 
   );
 };
 
@@ -199,7 +229,10 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       name,
       image
     },
-    'comments': *[_type == "comment" && post._ref == ^._id && approved == true],
+    'comments': *[
+      _type == "comment" &&
+      post._ref == ^._id &&
+      approved == true],
     description,
     mainImage,
     slug,
