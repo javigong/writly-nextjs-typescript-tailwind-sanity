@@ -15,7 +15,7 @@ const about = (props: Props) => {
 
       <div className=" text-white flex flex-col items-center text-center bg-[royalblue] border-black py-20">
         <div className="px-10 space-y-5">
-          <h1 className="text-6xl font-sans">About</h1>
+          <h1 className="text-6xl font-sans font-semibold uppercase">About</h1>
           <h2 className="text-2xl">
             Every idea needs a place to start. Writly is that place.
           </h2>

@@ -47,7 +47,7 @@ const contact = (props: Props) => {
 
       <div className=" text-white flex flex-col items-center text-center bg-[royalblue] border-black py-20">
         <div className="px-10 space-y-5">
-          <h1 className="text-6xl font-sans">Contact</h1>
+          <h1 className="text-6xl font-sans font-semibold uppercase">Contact</h1>
           <h2 className="text-2xl">
             Have a question? Want to collaborate?
           </h2>
