@@ -12,7 +12,7 @@ Writly is a case study of a blog platform implemented using Next.js and Sanity C
 - React.js
 - TypeScript
 - Sanity CMS
-- TailwindCSS
+- Tailwind CSS
 
 ## Features
 
@@ -39,7 +39,6 @@ Writly is a case study of a blog platform implemented using Next.js and Sanity C
 
 ## Future Implementations
 
-- User authentication directly from Writly web –currently it's via Sanity CMS.
 - About and Contact pages.
 
 ## Deployment details
