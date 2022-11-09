@@ -30,12 +30,12 @@ Writly is a case study of a blog platform implementation using Next.js and Sanit
 
 ![screencapture-writly-nextjs-typescript-tailwind-sanity-vercel-app-2022-11-08-16_27_49](https://user-images.githubusercontent.com/42308135/200706083-d6e34790-9a2e-4ada-b517-2a837aac02ec.png)
 
+![captures_chrome-capture-](https://user-images.githubusercontent.com/42308135/200706708-059cc080-f616-4018-8c34-8f78b0598a94.png)
+
 ![captures_chrome-capture-2022-10-8 (3)](https://user-images.githubusercontent.com/42308135/200703440-a7cd9bfe-7cde-4e53-b26c-462cd2f75827.png)
 ![captures_chrome-capture-2022-10-8 (4)](https://user-images.githubusercontent.com/42308135/200703464-66c93b14-1622-4519-b65d-8de372b0716e.png)
 
 ![captures_chrome-capture-2022-10-8 (6)](https://user-images.githubusercontent.com/42308135/200705651-7f3a4795-5138-4fdb-ab62-ab9b5d8faabd.png)
-
-
 
 ## Future Implementations
 
