@@ -16,6 +16,7 @@ Writly is a case study of a blog platform implementation using Next.js and Sanit
 
 ## Features
 
+- Responsive UI using Tailwind CSS.
 - Blog content managed using Sanity CMS.
 - Add comments to posts.
 - Form validation.
@@ -23,7 +24,6 @@ Writly is a case study of a blog platform implementation using Next.js and Sanit
 - Modern data fetching and caching techniques using Incremental Static Regeneration (ISR) to speed up page loading.
 - Authenticated requests via token to access CMS API.
 - User authentication via Sanity CMS.
-- Responsive UI using Tailwind CSS.
 - Robust code using TypeScript.
 
 ## Screenshots
