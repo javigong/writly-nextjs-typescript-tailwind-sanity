@@ -39,7 +39,7 @@ Writly is a case study of a blog platform implemented using Next.js and Sanity C
 
 ## Future Implementations
 
-- Get Started and Follow features.
+- Get Started page and Follow feature.
 
 ## Deployment details
 
