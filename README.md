@@ -1,6 +1,6 @@
 # Writly: Blog Platform Project
 
-Writly is a case study of a blog platform implemented using Next.js and Sanity CMS.
+Writly is a case study of a blog platform implemented using Next.js, React.js, TypeScript, Tailwind CSS, and Sanity CMS/Studio.
 
 ![smartmockups_la8uydot](https://user-images.githubusercontent.com/42308135/200700075-bf80d3f6-a1db-4763-babb-d271384d061d.jpg)
 
