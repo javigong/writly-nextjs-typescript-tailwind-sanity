@@ -57,7 +57,9 @@ const Home = ({ posts }: Props) => {
                 <div>
                   <h3 className="text-lg font-bold">{post.title}</h3>
                   <p className="text-sm">
-                    {post.description}<br/>by {post.author.name}
+                    {post.description}
+                    <br />
+                    by {post.author.name}
                   </p>
                 </div>
                 <div className="h-12 w-12">
