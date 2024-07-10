@@ -18,7 +18,7 @@ export const config = {
    * Authenticated request (like preview) will always bypass the CDN
    **/
   useCdn: process.env.NODE_ENV === "production",
-  
+
   token: process.env.SANITY_API_TOKEN,
 };
 
