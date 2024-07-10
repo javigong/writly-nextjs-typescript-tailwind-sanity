@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { useState } from "react";
-import Header from "../components/Header";
 import { SubmitHandler, useForm } from "react-hook-form";
+import Header from "../components/Header";
 
 interface IFormInput {
   _id: string;
@@ -13,7 +13,7 @@ interface IFormInput {
 type Props = {};
 
 const contact = (props: Props) => {
-  const [submitted, setSubmitted] = useState(false)
+  const [submitted, setSubmitted] = useState(false);
 
   const {
     register,
@@ -47,10 +47,10 @@ const contact = (props: Props) => {
 
       <div className=" text-white flex flex-col items-center text-center bg-[royalblue] border-black py-20">
         <div className="px-10 space-y-5">
-          <h1 className="text-6xl font-sans font-semibold uppercase">Contact</h1>
-          <h2 className="text-2xl">
-            Have a question? Want to collaborate?
-          </h2>
+          <h1 className="text-6xl font-sans font-semibold uppercase">
+            Contact
+          </h1>
+          <h2 className="text-2xl">Have a question? Want to collaborate?</h2>
         </div>
       </div>
       <div className="mt-8 p-10 max-w-4xl mx-auto">
@@ -63,7 +63,9 @@ const contact = (props: Props) => {
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col p-5  max-w-2xl mx-auto mb-10"
           >
-            <h3 className="text-sm text-[royalblue]">We'd love to hear from you.</h3>
+            <h3 className="text-sm text-[royalblue]">
+              We'd love to hear from you.
+            </h3>
             <h4 className="text-3xl font-bold">Send us your feedback</h4>
             <hr className="py-3 mt-2" />
 
